@@ -384,6 +384,22 @@ func TestJSONRawMessageWithTag(t *testing.T) {
 	}
 }
 
+func TestJSONNumber(t *testing.T) {
+	type J struct {
+		Field json.Number `json:"field"`
+	}
+
+	Seed(100)
+
+	var objs []J
+	Slice(&objs)
+
+	_, err := json.Marshal(objs)
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
 func TestJSONNoOptions(t *testing.T) {
 	Seed(11)
 
